@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.studycafe.controller">
+	<logger name="cf.studycafe.controller">
 		<level value="info" />
 	</logger>
 	
