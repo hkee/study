@@ -20,8 +20,15 @@
 
 </head>
 <body>
+
+<div class="jumbotron text-center">
+  <h1>STUDY SQUARE</h1> 
+  <p>한발짝,한걸음,꿈을향해<span class="glyphicon glyphicon-pencil"></span></p> 
+  <div align="right" ><font size="1"><span class="glyphicon glyphicon-bell"></span>운영시간: AM 10:00 ~PM 11:00<br><span class="glyphicon glyphicon-phone-alt"></span>문의:012-3456-7890</font></div>
+</div>
+
     <div class="container">
-        <div class="jumbotron">
+        <div class="text-center">
             <h1>Hello world!</h1>
             <p>The time on the server is ${serverTime}.</p>
             s<br>
