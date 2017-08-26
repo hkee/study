@@ -19,7 +19,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String center1(){
-		return "/board/notice";
+		return "/board/noticeListAll";
 	}
 	@RequestMapping(value = "/notice", method = RequestMethod.GET)
 	public String center(Locale locale, Model model) {
@@ -32,7 +32,7 @@ public class BoardController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "/board/notice";
+		return "/board/noticeListAll";
 	}
 	
 }
