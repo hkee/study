@@ -13,10 +13,11 @@
     .sidenav {
       padding-top: 60px;
    
-      background-color: #fcbba6;
+      background-color: #fcce99;
       height: 100%;
       width :15%;
       position:fixed; 
+      float:left;
     }
     
     
@@ -26,7 +27,7 @@
    
         
    
-        width :20%;
+        width :17%;
         position:fixed; 
       }
       .row.content {height:auto; width :20%;} 
@@ -52,7 +53,7 @@ ul.sider li:hover{
     <div class="sidenav">
   
       <ul class="ul sider">
-      	<li><a href="http://localhost:8080/board/noticeListAll" style="color:#f4511e; font-size:12pt;text-decoration: none;">공지사항&nbsp; &nbsp; &nbsp; &nbsp;</a></li>
+      	<li><a href="http://localhost:8080/board/notice" style="color:#f4511e; font-size:12pt;text-decoration: none;">공지사항</a></li>
       	
       	<li><a href="http://localhost:8080/board/QnAListAll" style="color:#f4511e; font-size:12pt;text-decoration: none;">QnA</a></li>
       
