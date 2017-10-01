@@ -10,7 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- 부트스트랩 연결 -->
-	<link href="<c:url value="bootstrap/css/bootstrap.css" />" rel="stylesheet">
+	<link href="<c:url value="/../bootstrap/css/bootstrap.css" />" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/static/css/full-calendar.css">
 
 	<!-- IE 9 미만 버전으로 접속했을 때 HTML5와 Media Query 지원을 위해 스크립트를 연결합니다.-->

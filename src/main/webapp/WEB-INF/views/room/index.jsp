@@ -46,8 +46,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				teststestsetsetsetsets
+				</div>	
 			</c:forEach>
 		</tbody>
 	</table>
