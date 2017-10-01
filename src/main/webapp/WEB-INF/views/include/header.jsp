@@ -10,9 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- 부트스트랩 연결 -->
-	<link href="<c:url value="bootstrap/css/bootstrap.css" />" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/static/css/full-calendar.css">
-
+	<link href="<c:url value="/../bootstrap/css/bootstrap.css" />" rel="stylesheet">
 	<!-- IE 9 미만 버전으로 접속했을 때 HTML5와 Media Query 지원을 위해 스크립트를 연결합니다.-->
 	<!--[if lt IE 9]>
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -40,9 +38,8 @@
         <li><a href="#drink">Drink</a></li>
         <li><a href="#studyroom">StudyRoom</a></li>
         <li><a href="http://localhost:8080/board/">Board</a></li>
-        <li><a href="#login">Login</a></li>
+        <li><a href="/member/login">Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<main class="main">
