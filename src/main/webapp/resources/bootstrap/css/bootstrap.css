@@ -12,6 +12,9 @@ html {
 body {
   margin: 0;
 }
+main {
+	padding-top: 48px;
+}
 article,
 aside,
 details,
