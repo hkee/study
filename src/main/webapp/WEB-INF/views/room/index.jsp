@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="../include/header.jsp"%>
-
+<%@include file="../include/nav.jsp"%>
+<main>
 <div class="container">
 
 	<table class="table">
@@ -52,4 +53,5 @@
 	</table>
 	
 </div>
+</main>
 <%@include file="../include/footer.jsp"%>

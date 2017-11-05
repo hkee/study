@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import cf.studycafe.domain.Room;
+import cf.studycafe.domain.RoomReserve;
 
 @Repository
 public class RoomDao {
@@ -19,5 +20,7 @@ public class RoomDao {
 	public List<Room> list() {
 		return session.selectList(namespace + ".list");
 	}
-	
+	public List<RoomReserve> reserveList() {
+		return session.selectList(namespace + ".reserveList");
+	}
 }

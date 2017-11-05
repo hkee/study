@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cf.studycafe.domain.Room;
+import cf.studycafe.domain.RoomReserve;
 import cf.studycafe.service.RoomService;
 
 @Controller
@@ -33,6 +34,29 @@ public class RoomController {
 	    model.addAttribute("list", list);
 	    
 	    return "/room/index";
+	  }
+	  
+	  @RequestMapping(value = "/step", method = RequestMethod.GET)
+	  public String step(Model model) throws Exception {
+	    logger.info("Room step Controller");
+	    
+	    List<RoomReserve> list = roomService.reserveList();
+	    
+	    logger.info("Room step = {} ", list);
+	    model.addAttribute("list", list);
+	    
+	    return "/room/step";
+	  }
+	  @RequestMapping(value = "/reserve", method = RequestMethod.GET)
+	  public String reserve(Model model) throws Exception {
+	    logger.info("Room reserve Controller");
+//	    
+//	    List<RoomReserve> list = roomService.reserveList();
+//	    
+//	    logger.info("Room step = {} ", list);
+//	    model.addAttribute("list", list);
+	    
+	    return "/room/reserve";
 	  }
 
 }

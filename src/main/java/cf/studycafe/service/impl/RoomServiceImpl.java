@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import cf.studycafe.domain.Room;
+import cf.studycafe.domain.RoomReserve;
 import cf.studycafe.persistence.RoomDao;
 import cf.studycafe.service.RoomService;
 
@@ -20,5 +21,10 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	public List<Room> list() {
 		return roomDao.list();
+	}
+	
+	@Override
+	public List<RoomReserve> reserveList() {
+		return roomDao.reserveList();
 	}
 }

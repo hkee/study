@@ -1837,7 +1837,7 @@ function htmlEscape(s) {
 	return s.replace(/&/g, '&')
 		.replace(/</g, '<')
 		.replace(/>/g, '>')
-		.replace(/'/g, ''')
+		.replace(/'/g, '\'')
 		.replace(/"/g, '"')
 		.replace(/\n/g, '<br />');
 }
@@ -4039,77 +4039,77 @@ function AgendaEventRenderer() {
 		var snapHeight = getSnapHeight();
 		var snapMinutes = getSnapMinutes();
 		var minMinute = getMinMinute();
-		eventElement.draggable({
-			opacity: opt('dragOpacity', 'month'), // use whatever the month view was using
-			revertDuration: opt('dragRevertDuration'),
-			start: function(ev, ui) {
-				trigger('eventDragStart', eventElement, event, ev, ui);
-				hideEvents(event, eventElement);
-				origWidth = eventElement.width();
-				hoverListener.start(function(cell, origCell) {
-					clearOverlays();
-					if (cell) {
-						revert = false;
-						var origDate = cellToDate(0, origCell.col);
-						var date = cellToDate(0, cell.col);
-						dayDelta = dayDiff(date, origDate);
-						if (!cell.row) {
-							// on full-days
-							renderDayOverlay(
-								addDays(cloneDate(event.start), dayDelta),
-								addDays(exclEndDay(event), dayDelta)
-							);
-							resetElement();
-						}else{
-							// mouse is over bottom slots
-							if (isStart) {
-								if (allDay) {
-									// convert event to temporary slot-event
-									eventElement.width(colWidth - 10); // don't use entire width
-									setOuterHeight(
-										eventElement,
-										snapHeight * Math.round(
-											(event.end ? ((event.end - event.start) / MINUTE_MS) : opt('defaultEventMinutes')) /
-												snapMinutes
-										)
-									);
-									eventElement.draggable('option', 'grid', [colWidth, 1]);
-									allDay = false;
-								}
-							}else{
-								revert = true;
-							}
-						}
-						revert = revert || (allDay && !dayDelta);
-					}else{
-						resetElement();
-						revert = true;
-					}
-					eventElement.draggable('option', 'revert', revert);
-				}, ev, 'drag');
-			},
-			stop: function(ev, ui) {
-				hoverListener.stop();
-				clearOverlays();
-				trigger('eventDragStop', eventElement, event, ev, ui);
-				if (revert) {
-					// hasn't moved or is out of bounds (draggable has already reverted)
-					resetElement();
-					eventElement.css('filter', ''); // clear IE opacity side-effects
-					showEvents(event, eventElement);
-				}else{
-					// changed!
-					var minuteDelta = 0;
-					if (!allDay) {
-						minuteDelta = Math.round((eventElement.offset().top - getSlotContainer().offset().top) / snapHeight)
-							* snapMinutes
-							+ minMinute
-							- (event.start.getHours() * 60 + event.start.getMinutes());
-					}
-					eventDrop(this, event, dayDelta, minuteDelta, allDay, ev, ui);
-				}
-			}
-		});
+//		eventElement.draggable({
+//			opacity: opt('dragOpacity', 'month'), // use whatever the month view was using
+//			revertDuration: opt('dragRevertDuration'),
+//			start: function(ev, ui) {
+//				trigger('eventDragStart', eventElement, event, ev, ui);
+//				hideEvents(event, eventElement);
+//				origWidth = eventElement.width();
+//				hoverListener.start(function(cell, origCell) {
+//					clearOverlays();
+//					if (cell) {
+//						revert = false;
+//						var origDate = cellToDate(0, origCell.col);
+//						var date = cellToDate(0, cell.col);
+//						dayDelta = dayDiff(date, origDate);
+//						if (!cell.row) {
+//							// on full-days
+//							renderDayOverlay(
+//								addDays(cloneDate(event.start), dayDelta),
+//								addDays(exclEndDay(event), dayDelta)
+//							);
+//							resetElement();
+//						}else{
+//							// mouse is over bottom slots
+//							if (isStart) {
+//								if (allDay) {
+//									// convert event to temporary slot-event
+//									eventElement.width(colWidth - 10); // don't use entire width
+//									setOuterHeight(
+//										eventElement,
+//										snapHeight * Math.round(
+//											(event.end ? ((event.end - event.start) / MINUTE_MS) : opt('defaultEventMinutes')) /
+//												snapMinutes
+//										)
+//									);
+//									eventElement.draggable('option', 'grid', [colWidth, 1]);
+//									allDay = false;
+//								}
+//							}else{
+//								revert = true;
+//							}
+//						}
+//						revert = revert || (allDay && !dayDelta);
+//					}else{
+//						resetElement();
+//						revert = true;
+//					}
+//					eventElement.draggable('option', 'revert', revert);
+//				}, ev, 'drag');
+//			},
+//			stop: function(ev, ui) {
+//				hoverListener.stop();
+//				clearOverlays();
+//				trigger('eventDragStop', eventElement, event, ev, ui);
+//				if (revert) {
+//					// hasn't moved or is out of bounds (draggable has already reverted)
+//					resetElement();
+//					eventElement.css('filter', ''); // clear IE opacity side-effects
+//					showEvents(event, eventElement);
+//				}else{
+//					// changed!
+//					var minuteDelta = 0;
+//					if (!allDay) {
+//						minuteDelta = Math.round((eventElement.offset().top - getSlotContainer().offset().top) / snapHeight)
+//							* snapMinutes
+//							+ minMinute
+//							- (event.start.getHours() * 60 + event.start.getMinutes());
+//					}
+//					eventDrop(this, event, dayDelta, minuteDelta, allDay, ev, ui);
+//				}
+//			}
+//		});
 		function resetElement() {
 			if (!allDay) {
 				eventElement
@@ -5084,7 +5084,7 @@ function DayEventRenderer() {
 	
 	// exports
 	t.renderDayEvents = renderDayEvents;
-	t.draggableDayEvent = draggableDayEvent; // made public so that subclasses can override
+//	t.draggableDayEvent = draggableDayEvent; // made public so that subclasses can override
 	t.resizableDayEvent = resizableDayEvent; // "
 	
 	
@@ -5628,9 +5628,9 @@ function DayEventRenderer() {
 
 	function bindDaySeg(event, eventElement, segment) {
 
-		if (isEventDraggable(event)) {
-			t.draggableDayEvent(event, eventElement, segment); // use `t` so subclasses can override
-		}
+//		if (isEventDraggable(event)) {
+//			t.draggableDayEvent(event, eventElement, segment); // use `t` so subclasses can override
+//		}
 
 		if (
 			segment.isEnd && // only allow resizing on the final segment for an event
@@ -5645,45 +5645,45 @@ function DayEventRenderer() {
 	}
 
 	
-	function draggableDayEvent(event, eventElement) {
-		var hoverListener = getHoverListener();
-		var dayDelta;
-		eventElement.draggable({
-			delay: 50,
-			opacity: opt('dragOpacity'),
-			revertDuration: opt('dragRevertDuration'),
-			start: function(ev, ui) {
-				trigger('eventDragStart', eventElement, event, ev, ui);
-				hideEvents(event, eventElement);
-				hoverListener.start(function(cell, origCell, rowDelta, colDelta) {
-					eventElement.draggable('option', 'revert', !cell || !rowDelta && !colDelta);
-					clearOverlays();
-					if (cell) {
-						var origDate = cellToDate(origCell);
-						var date = cellToDate(cell);
-						dayDelta = dayDiff(date, origDate);
-						renderDayOverlay(
-							addDays(cloneDate(event.start), dayDelta),
-							addDays(exclEndDay(event), dayDelta)
-						);
-					}else{
-						dayDelta = 0;
-					}
-				}, ev, 'drag');
-			},
-			stop: function(ev, ui) {
-				hoverListener.stop();
-				clearOverlays();
-				trigger('eventDragStop', eventElement, event, ev, ui);
-				if (dayDelta) {
-					eventDrop(this, event, dayDelta, 0, event.allDay, ev, ui);
-				}else{
-					eventElement.css('filter', ''); // clear IE opacity side-effects
-					showEvents(event, eventElement);
-				}
-			}
-		});
-	}
+//	function draggableDayEvent(event, eventElement) {
+//		var hoverListener = getHoverListener();
+//		var dayDelta;
+//		eventElement.draggable({
+//			delay: 50,
+//			opacity: opt('dragOpacity'),
+//			revertDuration: opt('dragRevertDuration'),
+//			start: function(ev, ui) {
+//				trigger('eventDragStart', eventElement, event, ev, ui);
+//				hideEvents(event, eventElement);
+//				hoverListener.start(function(cell, origCell, rowDelta, colDelta) {
+//					eventElement.draggable('option', 'revert', !cell || !rowDelta && !colDelta);
+//					clearOverlays();
+//					if (cell) {
+//						var origDate = cellToDate(origCell);
+//						var date = cellToDate(cell);
+//						dayDelta = dayDiff(date, origDate);
+//						renderDayOverlay(
+//							addDays(cloneDate(event.start), dayDelta),
+//							addDays(exclEndDay(event), dayDelta)
+//						);
+//					}else{
+//						dayDelta = 0;
+//					}
+//				}, ev, 'drag');
+//			},
+//			stop: function(ev, ui) {
+//				hoverListener.stop();
+//				clearOverlays();
+//				trigger('eventDragStop', eventElement, event, ev, ui);
+//				if (dayDelta) {
+//					eventDrop(this, event, dayDelta, 0, event.allDay, ev, ui);
+//				}else{
+//					eventElement.css('filter', ''); // clear IE opacity side-effects
+//					showEvents(event, eventElement);
+//				}
+//			}
+//		});
+//	}
 
 	
 	function resizableDayEvent(event, element, segment) {

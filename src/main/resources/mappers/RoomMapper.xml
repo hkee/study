@@ -15,4 +15,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	]]>
 	</select>
 
+	<select id="reserveList" resultType="cf.studycafe.domain.RoomReserve">
+	<![CDATA[
+		select 
+			id, room_seq, member_yn, regdate, resve_date, nmpr, drk_yn, stprc, resve_state, 
+     		DATE_ADD(regdate, INTERVAL 3 hour) as endDate
+		from 
+			RESVE
+		order by resve_seq asc;
+	]]>
+	</select>
+
 </mapper>
