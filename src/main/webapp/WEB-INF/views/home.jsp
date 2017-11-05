@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="include/header.jsp" %>
-
+<%@include file="include/nav.jsp" %>
 <div class="jumbotron text-center">
   <h1>STUDY SQUARE</h1> 
   <p>한발짝,한걸음,꿈을향해<span class="glyphicon glyphicon-pencil"></span></p> 
