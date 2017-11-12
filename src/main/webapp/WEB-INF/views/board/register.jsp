@@ -34,6 +34,9 @@
           //폼 submit
           $("#insertBoardFrm").submit();
       });
+      $("#re").click(function(){
+      obj.getById["contents"].exec("SET_IR", [""]);
+      });
   });
 </script>
 <script>
@@ -41,7 +44,15 @@ function clearText(field){
 if(field.defaultValue == field.value) field.value = '';
 else if(field.value == '') field.value = field.defaultValue;
 }
+function del(){
+	if (confirm("글작성을 취소하시겠습니까?") == true){    //확인
+		history.back();
+	}else{   //취소
+	    return;
+	}
 
+
+}
 
 </script>
 
@@ -84,7 +95,11 @@ else if(field.value == '') field.value = field.defaultValue;
     <input id="password" type="password" name="password" placeholder="Password" style="width:100px; float:right; margin-left:10px" disabled/>
 	</div>
   </div>
-  <input type="button" id="insertBoard" value="등록" />
+  <br>
+  <input type=reset name=re id="re" class="btn" value="초기화">
+  <input type="button" id="insertBoard" class="btn" value="등록"/>
+  <input type="button" class="btn" value="작성취소" onclick="Javascript:del();"/>
+ 
     </div>
   </div>
   </form>

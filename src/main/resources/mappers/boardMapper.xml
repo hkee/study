@@ -5,6 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="cf.studycafe.mapper.BoardMapper">
 <insert id="create">
-insert into studycafe.BOARD (id,title,contents) values(#{id},#{title},#{contents});
+insert into studycafe.BOARD (id,title,contents,gubun,password,open_yn) values(#{id},#{title},#{contents},#{gubun},#{password},#{open_yn});
 </insert>
 </mapper>
