@@ -40,7 +40,15 @@
         <li><a href="#drink">Drink</a></li>
         <li><a href="#studyroom">StudyRoom</a></li>
         <li><a href="http://localhost:8080/board/">Board</a></li>
-        <li><a href="#login">Login</a></li>
+        <c:choose>
+        	<c:when test="${not empty session.id}">
+        		<li><a href="/member/mypage">Mypage</a></li>
+        		
+        	</c:when>
+        	<c:otherwise>
+        		<li><a href="/member/login">Login</a></li>
+        	</c:otherwise>
+        </c:choose>
       </ul>
     </div>
   </div>

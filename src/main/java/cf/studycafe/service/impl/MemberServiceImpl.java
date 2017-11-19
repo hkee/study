@@ -18,7 +18,7 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO memberDAO;
 
 	@Override	
-	public int loginProc(MemberVo membervo) {
+	public MemberVo loginProc(MemberVo membervo) {
 		// TODO Auto-generated method stub
 		return memberDAO.loginProc(membervo);
 		

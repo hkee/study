@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cf.studycafe.mapper.MemberMapper">
-<select id="loginProc" resultType="int" >
-	SELECT COUNT(*)
+<select id="loginProc" resultType="MemberVo" >
+	SELECT *
 	  FROM MEMBER
 	 WHERE id=#{id}
 	   AND password=#{password}

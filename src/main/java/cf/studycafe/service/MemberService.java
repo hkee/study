@@ -8,6 +8,6 @@ import cf.studycafe.domain.MemberVo;
 
 public interface MemberService {
 
-	int loginProc(MemberVo membervo);
+	MemberVo loginProc(MemberVo membervo);
 
 }

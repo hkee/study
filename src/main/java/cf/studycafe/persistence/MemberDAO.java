@@ -1,5 +1,7 @@
 package cf.studycafe.persistence;
 
+import java.util.HashMap;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -16,7 +18,7 @@ public class MemberDAO {
 	private static String namespace = "cf.studycafe.mapper.MemberMapper";
 	
 	
-	public int loginProc(MemberVo membervo) {
+	public MemberVo loginProc(MemberVo membervo) {
 		// TODO Auto-generated method stub
 		return session.selectOne(namespace+".loginProc",membervo);
 	}
