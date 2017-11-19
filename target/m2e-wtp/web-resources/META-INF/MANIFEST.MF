@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
-Built-By: hyunkyung
-Build-Jdk: 1.8.0_131
-=======
 Built-By: SY
 Build-Jdk: 1.8.0_144
->>>>>>> ksy_dev
 Created-By: Maven Integration for Eclipse
 

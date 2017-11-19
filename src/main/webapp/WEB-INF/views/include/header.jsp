@@ -23,9 +23,6 @@
 	<script src="<c:url value="/../bootstrap/js/bootstrap.js" />"></script>
 	<script src="<c:url value="/static/js/full-calendar.js" />"></script>
 
-
-<<<<<<< HEAD
-=======
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -56,4 +53,4 @@
   </div>
 </nav>
 <main class="main">
->>>>>>> ksy_dev
+
