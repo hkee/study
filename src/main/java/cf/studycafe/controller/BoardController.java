@@ -47,6 +47,17 @@ public class BoardController {
 		
 		return "/board/noticeListAll";
 	}
+	@RequestMapping(value = "/free", method = RequestMethod.GET)
+	public String free(Model model) throws Exception{
+		logger.info("show free all list...........");
+		return "/board/freeListAll";
+		
+	}
+	@RequestMapping(value = "/qna", method = RequestMethod.GET)
+	public String qna(Model model) throws Exception{
+		logger.info("show QnA all list...........");
+		return "/board/qnaListAll";
+	}
 	@RequestMapping(value="/register",method=RequestMethod.GET)
 	public void registerGET(BoardVO board,Model model)throws Exception{
 		logger.info("register get.....");
@@ -57,7 +68,14 @@ public class BoardController {
 		logger.info(board.toString());
 		
 		service.regist(board);
-		
+		if(board.getGubun()=='q'){
+			return "redirect:/board/qna";
+		}
+		else if(board.getGubun()=='n'){
+			return "redirect:/board/notice";
+		}else if(board.getGubun()=='f'){
+			return "redirect:/board/free";
+		}
 		return "/board/success";
 	}
 	// 다중파일업로드
