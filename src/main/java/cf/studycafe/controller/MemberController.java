@@ -29,8 +29,9 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/member/*")
 public class MemberController {
 
+	private static final String Login ="login";
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-
+    //private static final HttpSession session  
 	@Inject
 	private MemberService memberService;
 	
@@ -41,17 +42,21 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "loginProc", method = {RequestMethod.POST})
-	public ResponseEntity<String> loginProc(@RequestBody MemberVo membervo, Model model) throws Exception{
+	public ResponseEntity<String> loginProc(@RequestBody MemberVo membervo, Model model, HttpServletRequest request) throws Exception{
 		
 		ResponseEntity<String> entity=null;
 		int success = 0;		
 		
 		try{
-			logger.info("loginProc1"); 
 			
-			success = memberService.loginProc(membervo);
+			
+			MemberVo member = memberService.loginProc(membervo);
+			HttpSession session  = request.getSession();
 					
-			if(success > 0){
+			if(member != null){
+				logger.info("loginProc member + " + member.getId()); 
+				model.addAttribute("membervo",member);
+				session.setAttribute(Login, member);
 				entity = new ResponseEntity<String>("success", HttpStatus.OK);
 			} 
 			else {
@@ -65,9 +70,11 @@ public class MemberController {
 	}	
 	
 	@RequestMapping(value = "mypage", method = RequestMethod.GET)
-	public String mypage(MemberVo membervo, Model model, HttpSession session){
-		logger.info("마이페이지");
-		model.addAttribute("membervo",membervo);
+	public String mypage(MemberVo membervo, Model model, HttpServletRequest request){
+		
+		HttpSession session  = request.getSession();
+		logger.info(session.getAttribute(Login).toString());
+		model.addAttribute("membervo",session.getAttribute(Login));
 		return "member/mypage";
 	}
 	

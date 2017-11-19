@@ -21,8 +21,7 @@ function ajax_login()
 	var id = $("#id").val();
 	var password = $("#password").val();
     var data = { id : id, password:password };
-    alert(data.id);
-    
+        
     $.ajax({
 		url: "/member/loginProc",
 		data:JSON.stringify(data),

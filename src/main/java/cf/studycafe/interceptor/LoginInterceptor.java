@@ -18,6 +18,7 @@ public class LoginInterceptor  extends HandlerInterceptorAdapter{
 	
 	@Override
 	public void postHandle(HttpServletRequest request,HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception{
+		logger.info("postHandle");
 		HttpSession session = request.getSession();
 		ModelMap modelMap = modelAndView.getModelMap();
 		Object membervo = modelMap.get("membervo");
