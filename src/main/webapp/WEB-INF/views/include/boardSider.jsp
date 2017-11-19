@@ -11,7 +11,7 @@
     
     /* Set gray background color and 100% height */
     .sidenav {
-      padding-top: 60px;
+      padding-top: 30px;
    
       background-color: #fcce99;
       height: 100%;
@@ -55,9 +55,9 @@ ul.sider li:hover{
       <ul class="ul sider">
       	<li><a href="http://localhost:8080/board/notice" style="color:#f4511e; font-size:12pt;text-decoration: none;">공지사항</a></li>
       	
-      	<li><a href="http://localhost:8080/board/QnAListAll" style="color:#f4511e; font-size:12pt;text-decoration: none;">QnA</a></li>
+      	<li><a href="http://localhost:8080/board/qna" style="color:#f4511e; font-size:12pt;text-decoration: none;">QnA</a></li>
       
-      	<li><a href="http://localhost:8080/board/freeboardListAll" style="color:#f4511e; font-size:11pt;text-decoration: none;">자유게시판</a></li>
+      	<li><a href="http://localhost:8080/board/free" style="color:#f4511e; font-size:11pt;text-decoration: none;">자유게시판</a></li>
       </ul>
 
 
