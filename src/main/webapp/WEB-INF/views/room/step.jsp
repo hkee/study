@@ -23,9 +23,6 @@
 	<script src="<c:url value="/static/js/calendar-custom.js" />"></script>
 	<script>
 	var list = new Array(); 
-		/* initialize the calendar
-		-----------------------------------------------------------------*/
-
 		var calendar = $('#calendar').fullCalendar(
 				{
 					header : {
@@ -37,7 +34,6 @@
 					firstDay : 1, //  1(Monday) this can be changed to 0(Sunday) for the USA system
 					selectable : true,
 					defaultView : 'month',
-
 					axisFormat : 'h:mm',
 					columnFormat : {
 						month : 'ddd', // Mon
@@ -52,19 +48,6 @@
 					},
 					allDaySlot : false,
 					selectHelper : true,
-// 					select : function(start, end, allDay) {
-// 						var title = prompt('Event Title:');
-// 						if (title) {
-// 							calendar.fullCalendar('renderEvent', {
-// 								title : title,
-// 								start : start,
-// 								end : end,
-// 								allDay : allDay
-// 							}, true // make the event "stick"
-// 							);
-// 						}
-// 						calendar.fullCalendar('unselect');
-// 					},
 					droppable : true, // this allows things to be dropped onto the calendar !!!
 					drop : function(date, allDay) { // this function is called when something is dropped
 
@@ -89,21 +72,18 @@
 							// if so, remove the element from the "Draggable Events" list
 							$(this).remove();
 						}
-
 					},
-			
 					events : [
 						<c:forEach items="${list}" var="item" varStatus="status">
 						{
 							title : '${item.room_seq}번방, ${item.id}님 예약 (총 ${item.nmpr}명)',
-							start : new Date("${item.regdate}".replace("KST ", "")),
+							start : new Date("${item.resveDate}".replace("KST ", "")),
 							end : new Date("${item.endDate}".replace("KST ", "")),
 							allDay : false,
 							className : 'important'
 						},
 						</c:forEach>
 					],
-
 				});
 	</script>
 </body>

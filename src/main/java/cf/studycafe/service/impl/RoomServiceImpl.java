@@ -24,7 +24,7 @@ public class RoomServiceImpl implements RoomService {
 	}
 	
 	@Override
-	public List<RoomReserve> reserveList() {
-		return roomDao.reserveList();
+	public List<RoomReserve> reserveList(int index) {
+		return roomDao.reserveList(index);
 	}
 }

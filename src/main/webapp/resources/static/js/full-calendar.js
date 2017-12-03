@@ -60,7 +60,7 @@ var defaults = {
 	
 	// locale
 	isRTL: false,
-	firstDay: 0,
+	firstDay: 1,
 	monthNames: ['January','February','March','April','May','June','July','August','September','October','November','December'],
 	monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
 	dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
@@ -2655,7 +2655,7 @@ function BasicEventRenderer() {
 
 ;;
 
-fcViews.agendaWeek = AgendaWeekView;
+//fcViews.agendaWeek = AgendaWeekView;
 
 function AgendaWeekView(element, calendar) {
 	var t = this;
@@ -2709,7 +2709,7 @@ function AgendaWeekView(element, calendar) {
 
 ;;
 
-fcViews.agendaDay = AgendaDayView;
+//fcViews.agendaDay = AgendaDayView;
 
 
 function AgendaDayView(element, calendar) {

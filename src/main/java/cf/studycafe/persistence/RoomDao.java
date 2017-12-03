@@ -20,7 +20,7 @@ public class RoomDao {
 	public List<Room> list() {
 		return session.selectList(namespace + ".list");
 	}
-	public List<RoomReserve> reserveList() {
-		return session.selectList(namespace + ".reserveList");
+	public List<RoomReserve> reserveList(int index) {
+		return session.selectList(namespace + ".reserveList", index);
 	}
 }

@@ -7,5 +7,5 @@ import cf.studycafe.domain.RoomReserve;
 
 public interface RoomService {
 	public List<Room> list(); 
-	public List<RoomReserve> reserveList(); 
+	public List<RoomReserve> reserveList(int index); 
 }

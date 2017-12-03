@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -38,10 +39,20 @@ public class RoomController {
 	  
 	  @RequestMapping(value = "/step", method = RequestMethod.GET)
 	  public String step(Model model) throws Exception {
+		  return step(model, 1);
+	  }
+	  @RequestMapping(value = "/step/{index}", method = RequestMethod.GET)
+	  public String step(Model model, @PathVariable("index") int index) throws Exception {
 	    logger.info("Room step Controller");
+	    try {
+	    	if (index == 0) { 
+		    	index = 1;
+		    }
+		} catch (Exception e) {
+			logger.debug("###ERROR### {}", e.getStackTrace());
+		}
 	    
-	    List<RoomReserve> list = roomService.reserveList();
-	    
+	    List<RoomReserve> list = roomService.reserveList(index);
 	    logger.info("Room step = {} ", list);
 	    model.addAttribute("list", list);
 	    
@@ -50,11 +61,6 @@ public class RoomController {
 	  @RequestMapping(value = "/reserve", method = RequestMethod.GET)
 	  public String reserve(Model model) throws Exception {
 	    logger.info("Room reserve Controller");
-//	    
-//	    List<RoomReserve> list = roomService.reserveList();
-//	    
-//	    logger.info("Room step = {} ", list);
-//	    model.addAttribute("list", list);
 	    
 	    return "/room/reserve";
 	  }

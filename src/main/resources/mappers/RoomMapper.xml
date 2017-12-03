@@ -15,13 +15,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	]]>
 	</select>
 
-	<select id="reserveList" resultType="cf.studycafe.domain.RoomReserve">
+	<select id="reserveList" resultType="cf.studycafe.domain.RoomReserve" parameterType="int">
 	<![CDATA[
 		select 
-			id, room_seq, member_yn, regdate, resve_date, nmpr, drk_yn, stprc, resve_state, 
-     		DATE_ADD(regdate, INTERVAL 3 hour) as endDate
+			id, room_seq, member_yn, regdate, resve_date as resveDate, nmpr, drk_yn, stprc, resve_state, 
+     		resve_date as endDate
 		from 
 			RESVE
+		where room_seq = #{index}
 		order by resve_seq asc;
 	]]>
 	</select>
