@@ -1,5 +1,7 @@
 package cf.studycafe.service.impl;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -17,7 +19,10 @@ public class BoardServiceImpl implements BoardService {
 	public void regist(BoardVO board) throws Exception{
 		dao.create(board);
 	}
-	
+	@Override
+	public List<BoardVO> noticeListAll() throws Exception{
+		return dao.noticeListAll();
+	}
 
 	
 }

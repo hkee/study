@@ -32,20 +32,12 @@ public class BoardController {
 	private BoardService service;
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String center1(){
-		return "/board/noticeListAll";
+		return "redirect:/board/noticeListAll";
 	}
-	@RequestMapping(value = "/notice", method = RequestMethod.GET)
-	public String center(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "/board/noticeListAll";
+	@RequestMapping(value = "/noticeListAll", method = RequestMethod.GET)
+	public void notice(Model model) throws Exception{
+		logger.info("show notice all List........");
+		model.addAttribute("list", service.noticeListAll());
 	}
 	@RequestMapping(value = "/free", method = RequestMethod.GET)
 	public String free(Model model) throws Exception{
@@ -66,7 +58,7 @@ public class BoardController {
 	public String registPOST(BoardVO board, Model model)throws Exception{
 		logger.info("regist Post......");
 		logger.info(board.toString());
-		
+
 		service.regist(board);
 		if(board.getGubun()=='q'){
 			return "redirect:/board/qna";

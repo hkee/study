@@ -7,4 +7,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="create">
 insert into studycafe.BOARD (id,title,contents,gubun,password,open_yn) values(#{id},#{title},#{contents},#{gubun},#{password},#{open_yn});
 </insert>
+<select id="noticeListAll" resultType="cf.studycafe.domain.BoardVO">
+<![CDATA[
+select
+board_seq,id,title,contents,open_yn,count,regdate
+from
+studycafe.BOARD
+where gubun ='n' order by board_seq desc, regdate desc;
+
+
+]]>
+</select>
+
 </mapper>

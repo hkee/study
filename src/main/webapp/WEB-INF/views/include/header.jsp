@@ -36,9 +36,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about">About</a></li>
-        <li><a href="#drink">Drink</a></li>
-        <li><a href="#studyroom">StudyRoom</a></li>
-        <li><a href="http://localhost:8080/board/">Board</a></li>
+        <li><a href="#testdrink">Drink</a></li>
+        <li><a href="/room/">StudyRoom</a></li>
+        <li><a href="/board/">Board</a></li>
         <c:choose>
         	<c:when test="${not empty session.id}">
         		<li><a href="/member/mypage">Mypage</a></li>
@@ -52,5 +52,5 @@
     </div>
   </div>
 </nav>
-<main class="main">
+
 

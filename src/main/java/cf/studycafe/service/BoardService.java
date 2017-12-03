@@ -5,5 +5,5 @@ import cf.studycafe.domain.BoardVO;;
 public interface BoardService {
 
 	public void regist(BoardVO board)throws Exception;
-	
+	public List<BoardVO> noticeListAll() throws Exception;
 }

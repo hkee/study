@@ -53,7 +53,7 @@ ul.sider li:hover{
     <div class="sidenav">
   
       <ul class="ul sider">
-      	<li><a href="http://localhost:8080/board/notice" style="color:#f4511e; font-size:12pt;text-decoration: none;">공지사항</a></li>
+      	<li><a href="http://localhost:8080/board/noticeListAll" style="color:#f4511e; font-size:12pt;text-decoration: none;">공지사항</a></li>
       	
       	<li><a href="http://localhost:8080/board/qna" style="color:#f4511e; font-size:12pt;text-decoration: none;">QnA</a></li>
       
