@@ -106,7 +106,12 @@ public class BoardController {
         }
         return sb.toString();
     }
-
+	@RequestMapping(value = "/read", method = RequestMethod.GET)
+	public String read(Model model) throws Exception{
+		logger.info("read page...........");
+		return "/board/read";
+		
+	}
 
 
 	
