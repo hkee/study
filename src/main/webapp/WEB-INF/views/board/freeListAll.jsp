@@ -1,12 +1,64 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@include file="../include/header.jsp" %>
+<%@include file="../include/nav.jsp" %>
+<%@include file="../include/boardSider.jsp" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<style>
+h1 {
+    color: #FCA205;
+    font-family: 'Lobster';
+}
+boardcontainer{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+</style>
 </head>
 <body>
-ÀÚÀ¯°Ô½ÃÆÇ ÆäÀÌÁöÀÔ´Ï´Ù.
+<div style=" padding-left:17%;"><div><h1>Free Board</h1></div>
+<div class="form-group" style="float:right">
+  <div class="form-inline">
+    <input class="form-control" id="keyword" type="text" style="width:150px">
+     <button class="btn btn-info">ê²€ìƒ‰</button> 
+     <a href="/board/register"><button class="btn btn-info">ê¸€ì“°ê¸°</button></a>
+  </div>
+ </div>
+<div class="boardcontainer">
+	<table class="table">
+			<thead>
+			<tr>
+				<th>ê¸€ë²ˆí˜¸</th>
+				<th style="width:40%">ì œëª©</th>
+				<th>ì‘ì„±ì</th>
+				<th>ì¡°íšŒìˆ˜</th>
+				<th>ê³µê°œì—¬ë¶€</th>
+				<th>ì‘ì„±ì¼</th>
+			</tr>
+		</thead>
+		<tbody>
+		<c:forEach items="${list}" var="boardVO">
+		<tr>
+			<td>${boardVO.board_seq}</td>
+			<td><a href='/board/read?bno=${boardVO.board_seq}'>${boardVO.title}</td>
+			<td>${boardVO.id}</td>
+			<td>${boardVO.count}</td>
+			<td>${boardVO.open_yn}</td>
+			<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.regdate}"/></td>
+		</tr>
+		
+		 </c:forEach>
+		
+		</tbody>
+	
+	</table>
+
+</div>
+</div>
 </body>
 </html>
+<%@include file="../include/footer.jsp" %>

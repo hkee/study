@@ -6,18 +6,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+function listbutton() {
+	var $gubun='${boardVO.gubun}';
+  if ($gubun == 'n' )
+   location.href = '/board/noticeListAll';
+  else if ($gubun  == 'q')
+   location.href = '/board/qna';
+  else if($gubun  == 'f')
+	  location.href = '/board/free';
+}
+</script>
 <title>Insert title here</title>
 </head>
 <div style="padding-left:5%;padding-right:5%">
 
-<div class="well-sm" style="background-color:#faebcc;margin-top:4%"><div style="float:left"><b>제목입니당</b></div> <div style="text-align:right">등록일자:2017.08.12</div></div>
-<div class="panel panel-warning"><div style="float:left">작성자</div> <div style="text-align:right">조회수</div></div>
-<div class="panel-body">내용입력란</div>
+<div class="well-sm" style="background-color:#faebcc;margin-top:4%"><div style="float:left"><b>${boardVO.title }</b></div> <div style="text-align:right">등록일자:<fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.regdate}"/></div></div>
+<div class="panel panel-warning"><div style="float:left">작성자:${boardVO.id}</div> <div style="text-align:right">조회수:${boardVO.count }</div></div>
+<div class="panel-body">${boardVO.contents }</div>
+
+
 
  </div>
  <div style="padding-left:5%;padding-right:5%">
  <button type="button" class="btn btn-default">수정</button>
- <button type="button" class="btn btn-default">삭제</button>
- <button type="button" class="btn btn-default">목록</button>
+ <button type="button" class="btn btn-default" onclick="location.href='/board/remove?bno=${boardVO.board_seq}'">삭제</button>
+ <button type="button" class="btn btn-default" onclick="listbutton();">목록</button>
  </div>
 </html>

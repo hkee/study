@@ -17,7 +17,6 @@ boardcontainer{
     margin-right: auto;
     margin-left: auto;
 }
-
 </style>
 </head>
 <body>
@@ -35,17 +34,31 @@ boardcontainer{
 			<tr>
 				<th>글번호</th>
 				<th style="width:40%">제목</th>
-				<th>공개여부</th>
 				<th>작성자</th>
 				<th>조회수</th>
+				<th>공개여부</th>
 				<th>작성일</th>
 			</tr>
 		</thead>
+		<tbody>
+		<c:forEach items="${list}" var="boardVO">
+		<tr>
+			<td>${boardVO.board_seq}</td>
+			<td><a href='/board/read?bno=${boardVO.board_seq}'>${boardVO.title}</td>
+			<td>${boardVO.id}</td>
+			<td>${boardVO.count}</td>
+			<td>${boardVO.open_yn}</td>
+			<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${boardVO.regdate}"/></td>
+		</tr>
+		
+		 </c:forEach>
+		
+		</tbody>
 	
 	</table>
 
 </div>
-Notice<br>Notice<br>Notice<br>Notice<br>Notice<br>Notice<br>Notice<br>Notice<br><br>Notice<br>Notice<br><br>Notice<br>Notice<br><br>Notice<br>Notice<br><br>Notice<br>Notice<br><br>Notice<br>Notice<br><br>Notice<br>Notice<br></div>
+</div>
 </body>
 </html>
 <%@include file="../include/footer.jsp" %>

@@ -44,7 +44,7 @@ boardcontainer{
 		<c:forEach items="${list}" var="boardVO">
 		<tr>
 			<td>${boardVO.board_seq}</td>
-			<td><a href=''>${boardVO.title}</td>
+			<td><a href='/board/read?bno=${boardVO.board_seq}'>${boardVO.title}</td>
 			<td>${boardVO.id}</td>
 			<td>${boardVO.count}</td>
 			<td>${boardVO.open_yn}</td>

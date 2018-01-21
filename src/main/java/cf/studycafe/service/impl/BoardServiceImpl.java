@@ -23,6 +23,14 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> noticeListAll() throws Exception{
 		return dao.noticeListAll();
 	}
+	@Override
+	public BoardVO read(Integer bno)throws Exception{
+		return dao.read(bno);
+	}
+	@Override
+	public void remove(Integer bno)throws Exception{
+		dao.delete(bno);
+	}
 
 	
 }

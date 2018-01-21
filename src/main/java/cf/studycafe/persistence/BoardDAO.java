@@ -26,5 +26,11 @@ public class BoardDAO {
 	public List<BoardVO> noticeListAll()throws Exception{
 		return session.selectList(namespace+".noticeListAll");
 	}
+	public BoardVO read(Integer bno)throws Exception{
+		return session.selectOne(namespace+".read",bno);
+	}
+	public void delete(Integer bno)throws Exception{
+		session.delete(namespace+".delete",bno);
+	}
 	
 }

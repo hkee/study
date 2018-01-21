@@ -18,5 +18,40 @@ where gubun ='n' order by board_seq desc, regdate desc;
 
 ]]>
 </select>
+<select id="free" resultType="cf.studycafe.domain.BoardVO">
+<![CDATA[
+select
+board_seq,id,title,contents,open_yn,count,regdate
+from
+studycafe.BOARD
+where gubun ='f' order by board_seq desc, regdate desc;
+
+
+]]>
+</select>
+
+<select id="qna" resultType="cf.studycafe.domain.BoardVO">
+<![CDATA[
+select
+board_seq,id,title,contents,open_yn,count,regdate
+from
+studycafe.BOARD
+where gubun ='q' order by board_seq desc, regdate desc;
+
+
+]]>
+</select>
+
+<select id="read" resultType="cf.studycafe.domain.BoardVO">
+select
+board_seq,id,title,contents,open_yn,count,regdate,gubun
+from
+studycafe.BOARD
+where board_seq=#{board_seq}
+</select>
+
+<delete id="delete">
+delete from studycafe.BOARD where board_seq=#{board_seq}
+</delete>
 
 </mapper>
