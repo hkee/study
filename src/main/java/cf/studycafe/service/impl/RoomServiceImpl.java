@@ -27,4 +27,8 @@ public class RoomServiceImpl implements RoomService {
 	public List<RoomReserve> reserveList(int index) {
 		return roomDao.reserveList(index);
 	}
+	@Override
+	public int insert(RoomReserve roomReserve) {
+		return roomDao.insert(roomReserve);
+	}
 }

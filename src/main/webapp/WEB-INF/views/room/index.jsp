@@ -40,8 +40,8 @@
 								<p>${room.memo }</p>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-success"
-									data-dismiss="modal">예약하기</button>
+								<a href="/room/reserve?room_seq=${room.room_seq}&min=${room.nmpr_min}&max=${room.nmpr_max}" type="button" class="btn btn-success"
+									>예약하기</a>
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">닫기</button>
 							</div>

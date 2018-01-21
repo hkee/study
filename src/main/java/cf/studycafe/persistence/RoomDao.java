@@ -23,4 +23,7 @@ public class RoomDao {
 	public List<RoomReserve> reserveList(int index) {
 		return session.selectList(namespace + ".reserveList", index);
 	}
+	public int insert(RoomReserve roomReserve) {
+		return session.insert(namespace + ".insert", roomReserve);	
+	}
 }

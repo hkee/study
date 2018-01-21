@@ -10,6 +10,7 @@ public class RoomReserve {
 	private Date regdate;
 	private Date endDate;
 	private Date resveDate;
+	private Date resveTime;
 	private String nmpr;
 	private String drk_yn;
 	private int stprc;
@@ -103,5 +104,12 @@ public class RoomReserve {
 		this.endDate = endDate;
 	}
 
+	public Date getResveTime() {
+		return resveTime;
+	}
+
+	public void setResveTime(Date resveTime) {
+		this.resveTime = resveTime;
+	}
 
 }
