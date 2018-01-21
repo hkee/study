@@ -35,17 +35,16 @@ public class MemberController {
 	@Inject
 	private MemberService memberService;
 	
-	@RequestMapping(value = "login", method = RequestMethod.GET)
+	@RequestMapping(value = "login", method = RequestMethod.GET) //로그인 화면
 	public String login(){
 		logger.info("로그인 화면.");
 		return "member/login";
 	}
 	
-	@RequestMapping(value = "loginProc", method = {RequestMethod.POST})
+	@RequestMapping(value = "loginProc", method = {RequestMethod.POST}) //로그인
 	public ResponseEntity<String> loginProc(@RequestBody MemberVo membervo, Model model, HttpServletRequest request) throws Exception{
 		
 		ResponseEntity<String> entity=null;
-		int success = 0;		
 		
 		try{
 			
@@ -69,7 +68,7 @@ public class MemberController {
 		return entity;
 	}	
 	
-	@RequestMapping(value = "mypage", method = RequestMethod.GET)
+	@RequestMapping(value = "mypage", method = RequestMethod.GET) //마이 페이지
 	public String mypage(MemberVo membervo, Model model, HttpServletRequest request){
 		
 		HttpSession session  = request.getSession();
@@ -78,4 +77,79 @@ public class MemberController {
 		return "member/mypage";
 	}
 	
+	@RequestMapping(value = "join", method = RequestMethod.GET) //회원가입 페이지
+	public String join(MemberVo membervo, Model model, HttpServletRequest request){
+		
+		return "member/join";
+	}
+	
+	@RequestMapping(value = "idCheck", method = {RequestMethod.POST}) //아이디 중복 확인
+	public ResponseEntity<String> idCheck(@RequestBody MemberVo membervo, Model model, HttpServletRequest request) throws Exception{
+		
+		ResponseEntity<String> entity=null;
+		
+		try{
+			
+			MemberVo member = memberService.idCheck(membervo);
+			
+			if(member != null){
+				logger.info("joinProc member + " + member.getId()); 							
+				entity = new ResponseEntity<String>("usingid", HttpStatus.OK);
+			} 
+			else {
+				entity = new ResponseEntity<String>("success", HttpStatus.OK);
+				
+			}
+		}catch(Exception e){			
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}		
+		return entity;
+	}
+	
+	@RequestMapping(value = "joinProc", method = {RequestMethod.POST}) //아이디 중복 확인
+	public ResponseEntity<String> joinProc(@RequestBody MemberVo membervo, Model model, HttpServletRequest request) throws Exception{
+		
+		ResponseEntity<String> entity=null;
+		
+		try{
+			
+			memberService.joinProc(membervo);
+			entity = new ResponseEntity<String>("success", HttpStatus.OK);				
+			
+		}catch(Exception e){			
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}		
+		return entity;
+	}
+
+	@RequestMapping(value = "findID", method = RequestMethod.GET) //아이디 찾기 화면
+	public String findID(){
+		logger.info("아이디 찾기");
+		return "member/findID";
+	}
+	
+	@RequestMapping(value = "findIDProc", method = {RequestMethod.POST}) //아이디 찾기 확인
+	public ResponseEntity<String> findIDProc(@RequestBody MemberVo membervo, Model model, HttpServletRequest request) throws Exception{
+		
+		ResponseEntity<String> entity=null;
+		
+		try{
+			
+			MemberVo member = memberService.findIDProc(membervo);
+			
+			if(member != null){
+				logger.info("findIDProc member + " + member.getName()); 
+				model.addAttribute("membervo",member);
+				entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			} 
+			else {
+				
+				entity = new ResponseEntity<String>("noUsingId", HttpStatus.OK);
+				
+			}
+		}catch(Exception e){			
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}		
+		return entity;
+	}
 }

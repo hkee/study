@@ -23,5 +23,23 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.loginProc(membervo);
 		
 	}
+
+	@Override
+	public void joinProc(MemberVo membervo) {
+		// TODO Auto-generated method stub
+		memberDAO.joinProc(membervo);
+	}
+
+	@Override //아이디 중복 체크
+	public MemberVo idCheck(MemberVo membervo) {
+		// TODO Auto-generated method stub
+		return memberDAO.idCheck(membervo);
+	}
+
+	@Override
+	public MemberVo findIDProc(MemberVo membervo) {
+		// TODO Auto-generated method stub
+		return memberDAO.findIDProc(membervo);
+	}
 	
 }

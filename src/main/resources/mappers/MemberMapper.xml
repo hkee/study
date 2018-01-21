@@ -12,4 +12,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	   AND password=#{password}
 
 </select>
+
+<select id="idCheck" resultType="MemberVo" >
+	SELECT *
+	  FROM MEMBER
+	 WHERE id=#{id}
+</select>
+
+
+<insert id="joinProc" >
+	INSERT INTO MEMBER
+		(id,password,name,email,author)
+	VALUES 
+		(#{id},#{password},#{name},#{email},'2')
+</insert> 
+
+<select id="findIDProc" resultType="MemberVo" >
+	SELECT *
+	  FROM MEMBER
+	 WHERE name=#{name} AND email=#{email}
+</select>
+
+
 </mapper>

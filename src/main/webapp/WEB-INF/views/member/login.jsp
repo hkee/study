@@ -3,32 +3,34 @@
 
 <%@include file="../include/header.jsp"%>
 
-
-<!-- <div class="jumbotron text-center">
-  <h1>STUDY SQUARE</h1> 
-  <p>한발짝,한걸음,꿈을향해<span class="glyphicon glyphicon-pencil"></span></p> 
-  <div align="right" ><font size="1"><span class="glyphicon glyphicon-bell"></span>운영시간: AM 10:00 ~PM 11:00<br><span class="glyphicon glyphicon-phone-alt"></span>문의:012-3456-7890</font></div>
-</div> -->
-
-
 	 <div class="container">
-        <div class="text-center">
+        <div class="text-center" style="padding-top:50px;">
 			<h1>로그인</h1> 
-			<form name="f" method="post" action="" >
-				<table style="margin-left: 500px;">
-					<tr>	
-						<td>아이디 : </td>
-						<td><input type="text" name="id" id="id" maxlength="30"/> </td>
-						<td rowspan="2"><a class="button" href="javascript:login();">로그인</a></td>
-					</tr>
-					<tr>	
-						<td>비밀번호 : </td>
-						<td><input type="password" name="password" id="password"/> </td>
-					</tr>
-					<tr>	
-					</tr>
-				</table>
-			</form>
+
+			<form class="form-horizontal"  name="f" method="post" action="">
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="email">아이디:</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control"  name="id" id="id" maxlength="30" placeholder="Enter id">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="pwd">Password:</label>
+			    <div class="col-sm-10"> 
+			      <input type="password" class="form-control" name="password" id="password" >
+			    </div>
+			  </div>
+			 
+			  <div class="form-group"> 
+			    <div class="col-sm-offset-2 col-sm-10">
+			       <a class="btn btn-info" href="javascript:login();">로그인</a>
+			    </div>
+			  </div>
+			</form> 
+
+			<button type="button" class="btn btn-link" onclick="location.href='/member/join'">회원가입</button>
+			<button type="button" class="btn btn-link" onclick="location.href='/member/findID'">아이디찾기</button>
+			<button type="button" class="btn btn-link" onclick="location.href='/member/changePWD'">비밀변호변경</button>
 		</div>
 	</div>
 

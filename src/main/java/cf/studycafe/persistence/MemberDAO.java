@@ -23,4 +23,22 @@ public class MemberDAO {
 		return session.selectOne(namespace+".loginProc",membervo);
 	}
 
+
+	public void joinProc(MemberVo membervo) {
+		// TODO Auto-generated method stub
+		 session.insert(namespace+".joinProc",membervo);
+	}
+
+	//아이디 중복 체크
+	public MemberVo idCheck(MemberVo membervo) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace+".idCheck",membervo);
+	}
+
+	//아이디 찾기
+	public MemberVo findIDProc(MemberVo membervo) {
+		// TODO Auto-generated method stub
+		return  session.selectOne(namespace+".findIDProc",membervo);
+	}
+
 }
