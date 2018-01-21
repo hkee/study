@@ -14,7 +14,8 @@
 </head>
 <body>
 	<div id='wrap'>
-
+		<c:forEach items="${list}" var="item" varStatus="status">
+		</c:forEach>
 		<div id='calendar'></div>
 
 		<div style='clear: both'></div>
@@ -76,11 +77,11 @@
 					events : [
 						<c:forEach items="${list}" var="item" varStatus="status">
 						{
-							title : '${item.room_seq}번방, ${item.id}님 예약 (총 ${item.nmpr}명)',
+							title : '${item.room_seq}번방 <fmt:formatDate pattern = "HH:mm" 
+						         value = "${item.resveTime}" />시, ${item.id}님 예약 (총 ${item.nmpr}명)',
 							start : new Date("${item.resveDate}".replace("KST ", "")),
 							end : new Date("${item.endDate}".replace("KST ", "")),
 							allDay : false,
-							className : 'important'
 						},
 						</c:forEach>
 					],

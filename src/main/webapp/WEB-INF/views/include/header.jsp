@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- 부트스트랩 연결 -->
 	<link href="<c:url value="/../bootstrap/css/bootstrap.css" />" rel="stylesheet">
+	<link href="<c:url value="/static/css/jquery-ui.min.css" />" rel="stylesheet">
+	<link href="<c:url value="/static/css/full-calendar.css" />" rel="stylesheet">
 	
 
 	<!-- IE 9 미만 버전으로 접속했을 때 HTML5와 Media Query 지원을 위해 스크립트를 연결합니다.-->
@@ -22,6 +24,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="<c:url value="/../bootstrap/js/bootstrap.js" />"></script>
 	<script src="<c:url value="/static/js/full-calendar.js" />"></script>
+	<script src="<c:url value="/static/js/jquery-ui.js" />"></script>
+	
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">

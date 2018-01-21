@@ -1,9 +1,16 @@
 package cf.studycafe.controller;
 
+import java.io.PrintWriter;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -54,15 +61,67 @@ public class RoomController {
 	    
 	    List<RoomReserve> list = roomService.reserveList(index);
 	    logger.info("Room step = {} ", list);
+    	for (RoomReserve resve : list) {
+    		logger.info("Room reserveTIme = {} ", resve.getResveTime());
+    		logger.info("Room reserveDate = {} ", resve.getResveDate());
+	    }
+	    
 	    model.addAttribute("list", list);
 	    
 	    return "/room/step";
 	  }
 	  @RequestMapping(value = "/reserve", method = RequestMethod.GET)
-	  public String reserve(Model model) throws Exception {
+	  public String reserve(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    logger.info("Room reserve Controller");
 	    
+	    String seq = request.getParameter("room_seq");
+	    String min = request.getParameter("min");
+	    String max = request.getParameter("max");
+	    
+	    if (StringUtils.isNotBlank(seq) && StringUtils.isNotBlank(min) && StringUtils.isNotBlank(max)) {
+		    model.addAttribute("seq", seq);
+		    model.addAttribute("min", min);
+		    model.addAttribute("max", max);
+		    
+		    return "/room/reserve";
+	    } else {
+	    	response.setContentType("text/html; charset=UTF-8");
+            PrintWriter out = response.getWriter();
+            out.println("<script>alert('방을 먼저 선택해주세요'); location.href='/room';</script>");
+            out.flush();
+            return "/room/index";
+	    }
+	    
+	  }
+	  @RequestMapping(value = "/reserveAction", method = RequestMethod.POST)
+	  public String reserveDo(Model model, HttpServletRequest request) throws Exception {
+	    logger.info("Room reserveDo Controller");
+	    String id = request.getParameter("user_name");
+	    String roomSeq = request.getParameter("room_number");
+	    String date = request.getParameter("date");
+	    String reserveTime = request.getParameter("reserve_time");
+	    String person = request.getParameter("person");
+	    String price = request.getParameter("price");
+	    price = price.replaceAll(",", "").replaceAll("원", "");
+	    
+	    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+	    Timestamp reserveTimeTs = new Timestamp(sdf.parse(reserveTime).getTime());
+	    
+	    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+	    Timestamp dateTs = new Timestamp(sdf2.parse(date).getTime());
+	    
+	    RoomReserve roomReserve = new RoomReserve();
+	    roomReserve.setId(id);
+	    roomReserve.setRoom_seq(Integer.parseInt(roomSeq));
+	    roomReserve.setRegdate(dateTs);
+	    roomReserve.setResveDate(dateTs);
+	    roomReserve.setStprc(Integer.parseInt(price));
+	    roomReserve.setResveTime(reserveTimeTs);
+	    roomReserve.setNmpr(person);
+	    
+		int result = roomService.insert(roomReserve);
 	    return "/room/reserve";
 	  }
 
 }
+

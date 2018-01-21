@@ -19,12 +19,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<![CDATA[
 		select 
 			id, room_seq, member_yn, regdate, resve_date as resveDate, nmpr, drk_yn, stprc, resve_state, 
-     		resve_date as endDate
+     		resve_date as endDate, resve_time as resveTime
 		from 
 			RESVE
 		where room_seq = #{index}
-		order by resve_seq asc;
+		order by resve_seq asc
 	]]>
 	</select>
+	
+	<insert id="insert" parameterType="cf.studycafe.domain.RoomReserve">
+	<![CDATA[
+		INSERT INTO RESVE
+			(id, room_seq,  regdate, resve_date, nmpr,
+			stprc, resve_time)
+		VALUES (#{id}, #{room_seq}, #{regdate}, #{resveDate}, #{nmpr},
+				#{stprc}, #{resveTime});
+	]]>
+	</insert>
 
 </mapper>
