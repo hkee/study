@@ -32,5 +32,12 @@ public class BoardDAO {
 	public void delete(Integer bno)throws Exception{
 		session.delete(namespace+".delete",bno);
 	}
+	public void viewCnt(Integer bno)throws Exception{
+		session.update(namespace+".viewCnt",bno);
+	}
+	public void modify(BoardVO vo)throws Exception{
+		session.update(namespace+".modify",vo);
+		
+	}
 	
 }

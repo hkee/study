@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cf.studycafe.domain.BoardVO;
 import cf.studycafe.service.BoardService;
@@ -107,6 +108,7 @@ public class BoardController {
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void read(@RequestParam("bno") int bno,Model model) throws Exception{
 		logger.info("read page...........");
+		service.updateViewCnt(bno);
 		model.addAttribute(service.read(bno));
 		
 	}
@@ -115,6 +117,18 @@ public class BoardController {
 		service.remove(bno);
 		
 		return "redirect:/board/noticeListAll";
+	}
+	@RequestMapping(value="/modify",method=RequestMethod.GET)
+	public void modifyGET(int bno, Model model)throws Exception{
+		model.addAttribute(service.read(bno));
+	}
+	@RequestMapping(value="/modify",method=RequestMethod.POST)
+	public String modifyPOST(BoardVO board,RedirectAttributes rttr)throws Exception{
+		logger.info("modify post.......");
+		int num=board.getBoard_seq();
+		service.modify(board);
+		
+		return "redirect:/board/read?bno="+num;
 	}
 	
 

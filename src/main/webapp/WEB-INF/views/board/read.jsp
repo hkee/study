@@ -29,7 +29,7 @@ function listbutton() {
 
  </div>
  <div style="padding-left:5%;padding-right:5%">
- <button type="button" class="btn btn-default">수정</button>
+ <button type="button" class="btn btn-default" onclick="location.href='/board/modify?bno=${boardVO.board_seq}'">수정</button>
  <button type="button" class="btn btn-default" onclick="location.href='/board/remove?bno=${boardVO.board_seq}'">삭제</button>
  <button type="button" class="btn btn-default" onclick="listbutton();">목록</button>
  </div>

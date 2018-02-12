@@ -31,6 +31,13 @@ public class BoardServiceImpl implements BoardService {
 	public void remove(Integer bno)throws Exception{
 		dao.delete(bno);
 	}
-
+	@Override
+	public void updateViewCnt(Integer bno)throws Exception{
+		dao.viewCnt(bno);
+	}
+	@Override
+	public void modify(BoardVO board)throws Exception{
+		dao.modify(board);
+	}
 	
 }

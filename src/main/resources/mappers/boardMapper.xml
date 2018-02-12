@@ -5,7 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="cf.studycafe.mapper.BoardMapper">
 <insert id="create">
-insert into studycafe.BOARD (id,title,contents,gubun,password,open_yn) values(#{id},#{title},#{contents},#{gubun},#{password},#{open_yn});
+insert into studycafe.BOARD (id,title,contents,gubun,password,open_yn) 
+values(#{id},#{title},#{contents},#{gubun},#{password},#{open_yn});
 </insert>
 <select id="noticeListAll" resultType="cf.studycafe.domain.BoardVO">
 <![CDATA[
@@ -53,5 +54,13 @@ where board_seq=#{board_seq}
 <delete id="delete">
 delete from studycafe.BOARD where board_seq=#{board_seq}
 </delete>
+
+<update id="viewCnt">
+	update studycafe.BOARD set count = count+1 where board_seq=#{board_seq}
+</update>
+<update id="modify">
+	update studycafe.BOARD set gubun=#{gubun},title=#{title},contents=#{contents},id=#{id},password=#{password},open_yn=#{open_yn},modidate=now()
+	where board_seq=#{board_seq};
+</update>
 
 </mapper>
