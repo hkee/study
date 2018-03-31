@@ -5,6 +5,7 @@
 <%@include file="../include/boardSider.jsp" %>
 <html>
 <head>
+<!-- test -->
 <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 <style>
 h1 {
